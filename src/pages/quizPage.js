@@ -92,7 +92,7 @@ const QuizPage = () => {
 
   return (
     <>
-      <div className='flex flex-col'>
+      <div className='flex flex-col bg-papayawhip'>
         <p className='text-4xl font-bold mb-4 text-center mb-20 sticky top-16 bg-blue-500 p-3'>{quiz.quizName}</p>
         <div className='grid gap-4 ml-10 text-2xl'>
             {quizQuestions.map((quizQuest) => {

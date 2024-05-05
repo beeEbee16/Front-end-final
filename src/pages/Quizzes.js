@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import DataContext from '../context/DataContext';
 import { IoMdSearch } from "react-icons/io";
 import Quiz from '../components/Quiz';
 import { quizList } from '../products/quizList';
@@ -19,7 +18,7 @@ const Quizzes = () => {
     return(
         <>
             <form onSubmit={(e) => e.preventDefault()}>
-                <div className='flex flex-row justify-center space-x-2'>
+                <div className='flex flex-row justify-center space-x-2 bg-papayawhip'>
                     <input
                         className='border-solid border-2 border-black my-4 w-96 h-15'
                         type='text'
@@ -36,7 +35,7 @@ const Quizzes = () => {
                     />
                 </div>
             </form>
-            <div className=''>
+            <div className='bg-papayawhip'>
                 {list.map((quiz) => (
                     <Quiz 
                         id={quiz.id}

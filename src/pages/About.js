@@ -3,7 +3,7 @@ import React from 'react'
 const About = () => {
     return(
         <>
-            <body className='bg-papayawhip text-center min-h-screen overflow-y-hidden items-center flex flex-row justify-center text-2xl'>
+            <div className='bg-papayawhip text-center min-h-screen overflow-y-hidden items-center flex flex-row justify-center text-2xl'>
                 <div className='about'>
                     <header><h1 className='header text-5xl p-20'>Quiz Central</h1></header>
                     <div>
@@ -16,8 +16,8 @@ const About = () => {
                         </p>
                     </div>
                 </div>
-            </body>
-            <footer className='fixed bottom-0 place-content-center my-auto'><medium><i>Quiz Central &copy; 2024 Quiz Central, Inc.</i></medium></footer>
+                <footer className='fixed bottom-0 justify-center item-center bottom-0  my-auto text-center text-lg'><i>Quiz Central &copy; 2024 Quiz Central, Inc.</i></footer>
+            </div>
         </>
     )
 }
