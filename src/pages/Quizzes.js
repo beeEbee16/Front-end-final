@@ -20,7 +20,7 @@ const Quizzes = () => {
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className='flex flex-row justify-center space-x-2 bg-papayawhip'>
                     <input
-                        className='border-solid border-2 border-black my-4 w-96 h-15'
+                        className='border-solid border-2 border-black my-4 w-96 h-15 mb-14'
                         type='text'
                         id='search'
                         role='searchbox'
@@ -35,7 +35,7 @@ const Quizzes = () => {
                     />
                 </div>
             </form>
-            <div className='bg-papayawhip'>
+            <div className='bg-papayawhip flex h-screen flex-wrap'>
                 {list.map((quiz) => (
                     <Quiz 
                         id={quiz.id}

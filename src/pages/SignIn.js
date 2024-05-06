@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { GoogleButton } from 'react-google-button';
 import AuthContext from '../context/AuthContext';
 
-const Login = () => {
+const SignIn = () => {
     const { googleSignIn } = useContext(AuthContext);
 
     const handleGoogleSignIn = async () => {
         try {
-            await googleSignIn();
+            await googleSignIn()
         } catch (err) {
             console.log(err)
         }
@@ -23,4 +23,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignIn
