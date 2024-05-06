@@ -128,13 +128,13 @@ const QuizPage = () => {
       </div>
       {hasCompleted ? (
         <>
-          <p className='text-center text-2xl'>{`You correctly answered ${correctCount} out of ${correctCount + incorrectCount} questions, which is ${correctCount / (correctCount + incorrectCount) * 100}%.`}</p>
-          <div className='flex flex-col items-center'>
+          <p className='text-center text-2xl bg-papayawhip'>{`You correctly answered ${correctCount} out of ${correctCount + incorrectCount} questions, which is ${correctCount / (correctCount + incorrectCount) * 100}%.`}</p>
+          <div className='flex flex-col items-center bg-papayawhip'>
             <button className='border-black border-solid border-2 border-black rounded w-32 m-10 bg-black text-white p-2 hover:bg-neutral-900' onClick={() => restart()}>Try Again</button>
           </div>
         </>
       ) : (
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center bg-papayawhip'>
         <button className='border-black border-solid border-2 border-black rounded w-32 m-10 bg-black text-white p-2 hover:bg-neutral-900' onClick={() => quizSubmit()}>Submit</button>
       </div>
       )}
