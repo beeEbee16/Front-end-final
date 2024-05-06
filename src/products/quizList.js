@@ -2,10 +2,12 @@ import harryPotterImg from '../products/harryPotter1.jpg';
 import lordRingsImg from '../products/lordRings2.jpg';
 import gameThronesImg from '../products/gameThrones3.jpg';
 import starWarsImg from '../products/starWars1.jpg';
+import macgyverImg from '../products/macgyver1.jpg';
 import harryPotterData from '../quizzes/harryPotterQuestionAnswer.json';
 import lordRingsData from '../quizzes/lordRingsQuestionAnswer.json';
 import gameThronesData from '../quizzes/gameThronesQuestionAnswer.json';
 import starWarsData from '../quizzes/starWarsQuestionAnswer.json';
+import macgyverData from '../quizzes/macgyverQuestionAnswer.json';
 
 
 
@@ -37,6 +39,13 @@ export const quizList = [
     "quizImage": starWarsImg,
     "quizData": starWarsData,
     "description": "General lore knowledge of a galaxy far, far away"
+    },
+    {
+        "id": 5,
+        "quizName": "MacGyver",
+        "quizImage": macgyverImg,
+        "quizData": macgyverData,
+        "description": "General lore knowledge of the original 1985 MacGyver"
     }
 ]
 
