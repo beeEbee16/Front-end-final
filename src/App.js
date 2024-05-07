@@ -3,6 +3,7 @@ import Quizzes from './pages/Quizzes';
 import About from './pages/About';
 import Login from './pages/Login';
 import Nav from './Nav';
+import DetailPage from './pages/DetailPage'
 import QuizPage from './pages/quizPage';
 import { DataProvider } from './context/DataContext';
 import { AuthProvider } from './context/AuthContext';
@@ -20,6 +21,7 @@ function App() {
             <Route path='/About' Component={About}/>
             <Route path='/Login' Component={Login}/>
             <Route path='/QuizPage' Component={QuizPage}/>
+            <Route path='/DetailPage' Component={DetailPage}/>
           </Routes>
         </Router>
       </DataProvider>

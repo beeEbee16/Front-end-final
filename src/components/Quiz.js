@@ -10,7 +10,7 @@ const Quiz = ({ id, quizName, quizImage }) => {
     <div className='text-center ml-10 mr-10'>
         <div className='overflow-hidden rounded'>
             <figure>
-                <Link to='/QuizPage'>
+                <Link to='/DetailPage'>
                     <img src={quizImage} className='object-cover' alt='' onClick={() => setQuizId(id)}/>
                 </Link>
                 <p><b>{quizName}</b></p>

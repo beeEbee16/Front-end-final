@@ -1,38 +1,17 @@
 import React, { useState, useContext } from 'react'
-import { v4 as uuidv4 } from 'uuid';
 import { quizList } from '../products/quizList';
 import DataContext from '../context/DataContext';
 
 const QuizPage = () => {
-  const [ selectedOptions, setSelectedOptions ] = useState([]);
   const [ hasCompleted, setHasCompleted ] = useState(false);
   const [ correctCount, setCorrectCount ]  = useState(0);
   const [ incorrectCount, setIncorrectCount ]  = useState(0);
-  const { quizId } = useContext(DataContext);
+  const { quizId, handleRadioChange, selectedOptions, setSelectedOptions } = useContext(DataContext);
   const quiz = quizList.find((quiz => quiz.id === quizId));
   
   if (quiz == null) return null;
 
   const quizQuestions = quiz.quizData;
-
-    const handleRadioChange = (group, value) => {
-      let questOpt;
-      questOpt = selectedOptions.filter(opt => (opt['questNum'] === group))
-
-        if (!questOpt.length) {
-          setSelectedOptions([
-            ...selectedOptions,
-            {questNum: group, answer: value}
-          ]);
-        } else {
-          const updated = selectedOptions.map((quest) => {
-            if (quest['questNum'] === group) {
-              return {...quest, answer: value};
-            } else return quest;
-          });
-          setSelectedOptions(updated);
-        }
-      };
     
     const quizSubmit = () => {
         let questOpt;
@@ -90,6 +69,18 @@ const QuizPage = () => {
 
     }
 
+    const isChecked = (questNum, value) => {
+      //const quizAnswers = JSON.parse(localStorage.getItem('quizAnswers'));
+      //let questOpt = quizAnswers.filter(opt => (opt['quizId'] === quizId) && (opt['answers'][questNum] === questNum) && (opt['answers']['answer'] === value));
+      let questOpt = selectedOptions.filter(opt => (opt['questNum'] === questNum && opt['answer'] === value));
+
+      if (questOpt.length === 0) {
+          return false;
+        } else {
+          return true
+        }
+    }
+
   return (
     <>
       <div className='flex flex-col bg-papayawhip'>
@@ -100,22 +91,22 @@ const QuizPage = () => {
                 <>
                   <p className='text-2xl'>{`${quizQuest.QuestionNum}.\u00A0\u00A0${quizQuest.Question}`}</p>
                   <div className='space-y-4'>
-                    <input className='mr-2 h-6 w-6' type='radio' id={`quest${quizQuest.QuestionNum}Option1`} name={`quest${quizQuest.QuestionNum}`} value='A' onChange={() => {
+                    <input className='mr-2 h-6 w-6' type='radio' checked={isChecked(`quest${quizQuest.QuestionNum}`, 'A')} id={`quest${quizQuest.QuestionNum}Option1`} name={`quest${quizQuest.QuestionNum}`} value='A' onChange={() => {
                       handleRadioChange(`quest${quizQuest.QuestionNum}`, 'A')
                     }}></input>
                     <label htmlFor={`quest${quizQuest.QuestionNum}Option1`}>{quizQuest.A}</label>
                     <br />
-                    <input className='mr-2 h-6 w-6' type='radio' id={`quest${quizQuest.QuestionNum}Option2`} name={`quest${quizQuest.QuestionNum}`} value='B' onChange={() => {
+                    <input className='mr-2 h-6 w-6' type='radio' checked={isChecked(`quest${quizQuest.QuestionNum}`, 'B')} id={`quest${quizQuest.QuestionNum}Option2`} name={`quest${quizQuest.QuestionNum}`} value='B' onChange={() => {
                       handleRadioChange(`quest${quizQuest.QuestionNum}`, 'B')
                     }}></input>
                     <label htmlFor={`quest${quizQuest.QuestionNum}Option2`}>{quizQuest.B}</label>
                     <br />
-                    <input className='mr-2 h-6 w-6' type='radio' id={`quest${quizQuest.QuestionNum}Option3`} name={`quest${quizQuest.QuestionNum}`} value='C' onChange={() => {
+                    <input className='mr-2 h-6 w-6' type='radio' checked={isChecked(`quest${quizQuest.QuestionNum}`, 'C')} id={`quest${quizQuest.QuestionNum}Option3`} name={`quest${quizQuest.QuestionNum}`} value='C' onChange={() => {
                       handleRadioChange(`quest${quizQuest.QuestionNum}`, 'C')
                     }}></input>
                     <label htmlFor={`quest${quizQuest.QuestionNum}Option3`}>{quizQuest.C}</label>
                     <br />
-                    <input className='mr-2 h-6 w-6' type='radio' id={`quest${quizQuest.QuestionNum}Option4`} name={`quest${quizQuest.QuestionNum}`} value='D' onChange={() => {
+                    <input className='mr-2 h-6 w-6' type='radio' checked={isChecked(`quest${quizQuest.QuestionNum}`, 'D')} id={`quest${quizQuest.QuestionNum}Option4`} name={`quest${quizQuest.QuestionNum}`} value='D' onChange={() => {
                       handleRadioChange(`quest${quizQuest.QuestionNum}`, 'D')
                     }}></input>
                     <label htmlFor={`quest${quizQuest.QuestionNum}Option4`}>{quizQuest.D}</label>
@@ -130,12 +121,12 @@ const QuizPage = () => {
         <>
           <p className='text-center text-2xl bg-papayawhip'>{`You correctly answered ${correctCount} out of ${correctCount + incorrectCount} questions, which is ${correctCount / (correctCount + incorrectCount) * 100}%.`}</p>
           <div className='flex flex-col items-center bg-papayawhip'>
-            <button className='border-black border-solid border-2 border-black rounded w-32 m-10 bg-black text-white p-2 hover:bg-neutral-900' onClick={() => restart()}>Try Again</button>
+            <button className='border-black border-solid border-2 rounded w-32 m-10 bg-black text-white p-2 hover:bg-neutral-900' onClick={() => restart()}>Try Again</button>
           </div>
         </>
       ) : (
       <div className='flex flex-col items-center bg-papayawhip'>
-        <button className='border-black border-solid border-2 border-black rounded w-32 m-10 bg-black text-white p-2 hover:bg-neutral-900' onClick={() => quizSubmit()}>Submit</button>
+        <button className='border-black border-solid border-2 rounded w-32 m-10 bg-black text-white p-2 hover:bg-neutral-900' onClick={() => quizSubmit()}>Submit</button>
       </div>
       )}
     </>
